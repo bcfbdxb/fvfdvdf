@@ -1,0 +1,32 @@
+# include<stdio.h>
+# include<stdlib.h>
+typedef struct Tnode{
+	int Data;
+struct Tnode*Left;
+struct Tnode*Right;
+}BiTNode,*BiTree;
+BiTree creatBiTree(){
+	int a;
+	BiTree T;
+	scanf("%d",&a);
+	if(a==0) T=NULL;
+	else{
+	   T = (BiTree)malloc(sizeof(BiTNode));
+       T->Data = a;
+       T->Left = creatBiTree();
+       T->Right = creatBiTree();
+	}
+	return T;
+}
+void InorderTraversal(BiTree T){
+if(T){
+InorderTraversal(T->Left);
+printf("%d",T->Data );
+InorderTraversal(T->Right);	
+}	
+}
+int main(){
+struct Tnode* T;
+T=creatBiTree();
+InorderTraversal(T);	
+}
